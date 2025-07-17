@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz Geograficzny</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 650px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #00695c;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      color: #004d40;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 4px;
+    }
+    .question {
+      margin-bottom: 15px;
+    }
+    .question p {
+      margin: 0 0 6px;
+      font-weight: 600;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      cursor: pointer;
+      font-size: 0.95em;
+      padding: 6px 10px;
+      border-radius: 4px;
+    }
+    input[type="text"],
+    input[type="date"] {
+      width: 100%;
+      max-width: 400px;
+      margin-top: 4px;
+      padding: 8px 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      box-sizing: border-box;
+    }
+    input[type="radio"],
+    input[type="checkbox"] {
+      accent-color: #00897b;
+      transform: scale(1.1);
+    }
+    input[type="text"]:disabled,
+    input[type="date"]:disabled {
+      background-color: #f7fafc;
+      color: #a0aec0;
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+    input[type="radio"]:disabled,
+    input[type="checkbox"]:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    label:has(input:disabled) {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .button {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 5px;
+      background-color: #00897b;
+      color: white;
+      font-size: 0.95em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      position: relative;
+    }
+    .button:hover:not(:disabled) {
+      background-color: #00695c;
+    }
+    .button:disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
+    }
+    .button.active {
+      background-color: #43a047;
+    }
+    .button.loading::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      margin: -8px 0 0 -8px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top: 2px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .info {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 5px;
+      display: none;
+      font-size: 0.95em;
+    }
+    .info.error {
+      background-color: #ffcdd2;
+      color: #c62828;
+      border-left: 4px solid #c62828;
+    }
+    .info.success {
+      background-color: #c8e6c9;
+      color: #2e7d32;
+      border-left: 4px solid #2e7d32;
+    }
+    .results {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #e0f2f1;
+      border-radius: 6px;
+      display: none;
+      text-align: center;
+    }
+    .result-score {
+      font-weight: bold;
+      font-size: 1.4em;
+      color: #00796b;
+      margin-bottom: 8px;
+    }
+    .result-details {
+      font-style: italic;
+      color: #555;
+    }
+    label.correct {
+      background-color: #c8e6c9 !important;
+      border-left: 4px solid #2e7d32;
+    }
+    label.incorrect {
+      background-color: #ffcdd2 !important;
+      border-left: 4px solid #c62828;
+    }
+    .error-input {
+      border-color: #c62828;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Quiz Geograficzny</h1>
+    <form id="formularzQuizu">
+      <div class="section">
+        <h2 class="section-title">Dane osobowe</h2>
+        <div class="question">
+          <label>Imię: <input type="text" name="imie" placeholder="Wprowadź swoje imię (Musi być z dużej litery!)" /></label>
+        </div>
+        <div class="question">
+          <label>Nazwisko: <input type="text" name="nazwisko" placeholder="Wprowadź swoje nazwisko (Musi być z dużej litery!)" /></label>
+        </div>
+        <div class="question">
+          <label>Data urodzenia: <input type="date" name="dataUrodzenia" /></label>
+        </div>
+        <div class="question">
+          <label>Adres: <input type="text" name="adres" placeholder="Wprowadź swój adres (Min. 5 znaków!)" /></label>
+        </div>
+      </div>
+      <div class="section">
+        <h2 class="section-title">Pytania jednokrotnego wyboru</h2>
+        <div class="question">
+          <p>1. Na którym kontynencie znajduje się Egipt?</p>
+          <label><input type="radio" name="pyt1" value="Afryka" /> Afryka</label>
+          <label><input type="radio" name="pyt1" value="Azja" /> Azja</label>
+          <label><input type="radio" name="pyt1" value="Europa" /> Europa</label>
+          <label><input type="radio" name="pyt1" value="Ameryka" /> Ameryka</label>
+        </div>
+        <div class="question">
+          <p>2. Jaka jest najdłuższa rzeka na świecie?</p>
+          <label><input type="radio" name="pyt2" value="Nil" /> Nil</label>
+          <label><input type="radio" name="pyt2" value="Amazonka" /> Amazonka</label>
+          <label><input type="radio" name="pyt2" value="Jangcy" /> Jangcy</label>
+          <label><input type="radio" name="pyt2" value="Missisipi" /> Missisipi</label>
+        </div>
+        <div class="question">
+          <p>3. Które państwo jest znane jako "Kraj Alpejski"?</p>
+          <label><input type="radio" name="pyt3" value="Szwajcaria" /> Szwajcaria</label>
+          <label><input type="radio" name="pyt3" value="Austria" /> Austria</label>
+          <label><input type="radio" name="pyt3" value="Niemcy" /> Niemcy</label>
+          <label><input type="radio" name="pyt3" value="Francja" /> Francja</label>
+        </div>
+        <div class="question">
+          <p>4. Jaki jest najwyższy szczyt świata?</p>
+          <label><input type="radio" name="pyt4" value="Mount Everest" /> Mount Everest</label>
+          <label><input type="radio" name="pyt4" value="K2" /> K2</label>
+          <label><input type="radio" name="pyt4" value="Kangchenjunga" /> Kangchenjunga</label>
+          <label><input type="radio" name="pyt4" value="Lhotse" /> Lhotse</label>
+        </div>
+        <div class="question">
+          <p>5. Który kraj ma największą liczbę ludności?</p>
+          <label><input type="radio" name="pyt5" value="Chiny" /> Chiny</label>
+          <label><input type="radio" name="pyt5" value="Indie" /> Indie</label>
+          <label><input type="radio" name="pyt5" value="Stany Zjednoczone" /> Stany Zjednoczone</label>
+          <label><input type="radio" name="pyt5" value="Indonezja" /> Indonezja</label>
+        </div>
+      </div>
+      <div class="section">
+        <h2 class="section-title">Pytania wielokrotnego wyboru</h2>
+        <div class="question">
+          <p>6. Które z tych krajów należą do Europy?</p>
+          <label><input type="checkbox" name="pyt6" value="Francja" /> Francja</label>
+          <label><input type="checkbox" name="pyt6" value="Brazylia" /> Brazylia</label>
+          <label><input type="checkbox" name="pyt6" value="Niemcy" /> Niemcy</label>
+          <label><input type="checkbox" name="pyt6" value="Japonia" /> Japonia</label>
+        </div>
+        <div class="question">
+          <p>7. Które z tych zbiorników wodnych to oceany?</p>
+          <label><input type="checkbox" name="pyt7" value="Atlantyk" /> Atlantyk</label>
+          <label><input type="checkbox" name="pyt7" value="Morze Śródziemne" /> Morze Śródziemne</label>
+          <label><input type="checkbox" name="pyt7" value="Spokojny" /> Spokojny</label>
+          <label><input type="checkbox" name="pyt7" value="Indyjski" /> Indyjski</label>
+        </div>
+        <div class="question">
+          <p>8. Które z tych krajów należą do Afryki?</p>
+          <label><input type="checkbox" name="pyt8" value="Egipt" /> Egipt</label>
+          <label><input type="checkbox" name="pyt8" value="Tajlandia" /> Tajlandia</label>
+          <label><input type="checkbox" name="pyt8" value="Nigeria" /> Nigeria</label>
+          <label><input type="checkbox" name="pyt8" value="Kenia" /> Kenia</label>
+        </div>
+        <div class="question">
+          <p>9. Cechy klimatu pustynnego?</p>
+          <label><input type="checkbox" name="pyt9" value="Niskie opady" /> Niskie opady</label>
+          <label><input type="checkbox" name="pyt9" value="Wysoka wilgotność" /> Wysoka wilgotność</label>
+          <label><input type="checkbox" name="pyt9" value="Ekstremalne temperatury" /> Ekstremalne temperatury</label>
+          <label><input type="checkbox" name="pyt9" value="Rzadka roślinność" /> Rzadka roślinność</label>
+        </div>
+        <div class="question">
+          <p>10. Które miasta są stolicami?</p>
+          <label><input type="checkbox" name="pyt10" value="Nowy Jork" /> Nowy Jork</label>
+          <label><input type="checkbox" name="pyt10" value="Tokio" /> Tokio</label>
+          <label><input type="checkbox" name="pyt10" value="Bombaj" /> Bombaj</label>
+          <label><input type="checkbox" name="pyt10" value="Berlin" /> Berlin</label>
+        </div>
+      </div>
+      <div class="buttons">
+        <button type="button" id="przyciskWaliduj" class="button">Sprawdź odpowiedzi</button>
+        <button type="submit" id="przyciskWyslij" class="button" disabled>Wyślij quiz</button>
+      </div>
+      <div id="informacja" class="info"></div>
+      <div id="wyniki" class="results"></div>
+    </form>
+  </div>
+  <script>
+    const przyciskWaliduj = document.getElementById('przyciskWaliduj');
+    const przyciskWyslij = document.getElementById('przyciskWyslij');
+    const poleInformacja = document.getElementById('informacja');
+    const poleWyniki = document.getElementById('wyniki');
+    const formularzQuizu = document.getElementById('formularzQuizu');
+
+    const poprawneOdpowiedziPojedyncze = {
+      pyt1: 'Afryka', pyt2: 'Nil', pyt3: 'Szwajcaria', pyt4: 'Mount Everest', pyt5: 'Indie'
+    };
+
+    const poprawneOdpowiedziWielokrotne = {
+      pyt6: ['Francja', 'Niemcy'], pyt7: ['Atlantyk', 'Spokojny', 'Indyjski'],
+      pyt8: ['Egipt', 'Nigeria', 'Kenia'], pyt9: ['Niskie opady', 'Ekstremalne temperatury', 'Rzadka roślinność'],
+      pyt10: ['Tokio', 'Berlin']
+    };
+
+    function pokazInformacje(wiadomosc, typ) {
+      poleInformacja.textContent = wiadomosc;
+      poleInformacja.className = `info ${typ}`;
+      poleInformacja.style.display = 'block';
+    }
+
+    function walidujOdpowiedzi() {
+      poleInformacja.style.display = 'none';
+      const imie = formularzQuizu.imie.value.trim();
+      const nazwisko = formularzQuizu.nazwisko.value.trim();
+      const dataUrodzenia = formularzQuizu.dataUrodzenia.value.trim();
+      const adres = formularzQuizu.adres.value.trim();
+      const regexImie = /^[A-ZŁŚŻŹĆŃ][a-ząćęłńóśźż]{1,29}$/;
+      const regexNazwisko = /^[A-ZŁŚŻŹĆŃ][a-ząćęłńóśźż]{1,29}(-[A-ZŁŚŻŹĆŃ][a-ząćęłńóśźż]{1,29})?$/;
+      const regexAdres = /^(?=.{5,100}$)[A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż0-9\s\/\.\-]+$/;
+      formularzQuizu.querySelectorAll('input').forEach(input => input.classList.remove('error-input'));
+      if (!imie || !nazwisko || !dataUrodzenia || !adres) {
+        pokazInformacje('Proszę wypełnić wszystkie dane osobowe.', 'error');
+        if (!imie) formularzQuizu.imie.classList.add('error-input');
+        if (!nazwisko) formularzQuizu.nazwisko.classList.add('error-input');
+        if (!dataUrodzenia) formularzQuizu.dataUrodzenia.classList.add('error-input');
+        if (!adres) formularzQuizu.adres.classList.add('error-input');
+        return false;
+      }
+      if (!regexImie.test(imie)) {
+        pokazInformacje('Imię jest niepoprawne.', 'error');
+        formularzQuizu.imie.classList.add('error-input');
+        return false;
+      }
+      if (!regexNazwisko.test(nazwisko)) {
+        pokazInformacje('Nazwisko jest niepoprawne.', 'error');
+        formularzQuizu.nazwisko.classList.add('error-input');
+        return false;
+      }
+      if (!regexAdres.test(adres)) {
+        pokazInformacje('Adres jest niepoprawny. Musi składać się z co najmniej 5 znaków.', 'error');
+        formularzQuizu.adres.classList.add('error-input');
+        return false;
+      }
+      const dataUrodzeniaDate = new Date(dataUrodzenia);
+      const dzisiaj = new Date();
+      if (dataUrodzeniaDate > dzisiaj) {
+        pokazInformacje('Data urodzenia nie może być z przyszłości.', 'error');
+        formularzQuizu.dataUrodzenia.classList.add('error-input');
+        return false;
+      }
+      for (let i = 1; i <= 5; i++) {
+        if (!formularzQuizu.querySelector(`input[name="pyt${i}"]:checked`)) {
+          pokazInformacje(`Proszę odpowiedzieć na pytanie ${i}.`, 'error');
+          return false;
+        }
+      }
+      for (let i = 6; i <= 10; i++) {
+        if (!formularzQuizu.querySelectorAll(`input[name="pyt${i}"]:checked`).length) {
+          pokazInformacje(`Proszę zaznaczyć odpowiedź w pytaniu ${i}.`, 'error');
+          return false;
+        }
+      }
+      przyciskWyslij.disabled = false;
+      przyciskWyslij.classList.add('active');
+      pokazInformacje('Wszystkie odpowiedzi zweryfikowane poprawnie! Możesz wysłać quiz.', 'success');
+      return true;
+    }
+
+    function obliczWynik() {
+      let wynik = 0;
+      formularzQuizu.querySelectorAll("label").forEach(label => label.classList.remove("correct", "incorrect"));
+      for (let i = 1; i <= 5; i++) {
+        const pytanie = `pyt${i}`;
+        const poprawna = poprawneOdpowiedziPojedyncze[pytanie];
+        const zaznaczone = formularzQuizu.querySelector(`input[name="${pytanie}"]:checked`);
+        if (zaznaczone) {
+          const label = zaznaczone.closest('label');
+          if (zaznaczone.value === poprawna) {
+            wynik++;
+            label.classList.add('correct');
+          } else {
+            label.classList.add('incorrect');
+            formularzQuizu.querySelector(`input[name="${pytanie}"][value="${poprawna}"]`).closest('label').classList.add('correct');
+          }
+        }
+      }
+      for (let i = 6; i <= 10; i++) {
+        const pytanie = `pyt${i}`;
+        const poprawne = poprawneOdpowiedziWielokrotne[pytanie].sort();
+        const zaznaczone = Array.from(formularzQuizu.querySelectorAll(`input[name="${pytanie}"]:checked`)).map(x => x.value).sort();
+        const wszystkieOpcje = Array.from(formularzQuizu.querySelectorAll(`input[name="${pytanie}"]`));
+        wszystkieOpcje.forEach(opcja => {
+          const label = opcja.closest('label');
+          if (poprawne.includes(opcja.value)) {
+            label.classList.add('correct');
+          }
+          if (zaznaczone.includes(opcja.value) && !poprawne.includes(opcja.value)) {
+            label.classList.add('incorrect');
+          }
+        });
+        if (JSON.stringify(poprawne) === JSON.stringify(zaznaczone)) {
+          wynik++;
+        }
+      }
+      poleWyniki.innerHTML = `<div class="result-score">Twój wynik: ${wynik}/10</div>`;
+      poleWyniki.style.display = 'block';
+    }
+
+    przyciskWaliduj.addEventListener('click', walidujOdpowiedzi);
+
+    formularzQuizu.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!walidujOdpowiedzi()) return;
+
+      przyciskWyslij.classList.add('loading');
+      przyciskWyslij.textContent = '';
+
+      setTimeout(() => {
+        obliczWynik();
+        przyciskWyslij.disabled = true;
+        przyciskWyslij.classList.remove('loading', 'active');
+        przyciskWyslij.textContent = 'Quiz wysłany';
+        przyciskWaliduj.disabled = true;
+        poleInformacja.style.display = 'none';
+
+        formularzQuizu.querySelectorAll('input').forEach(input => {
+          input.disabled = true;
+        });
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
