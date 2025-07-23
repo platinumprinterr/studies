@@ -1,0 +1,18 @@
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore environment variable files
+.env
+.env.local
+
+# Ignore build and distribution directories
+build/
+dist/
+*.egg-info/
+
+# Ignore PyInstaller output
+dist/
+build/
+*.spec
