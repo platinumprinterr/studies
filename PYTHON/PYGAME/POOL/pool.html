@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module pool</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">pool</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cminad%5Cdesktop%5Cflegma%5Cprogramowanie%5Cpython%5Cpool%5Cpool.py">c:\users\minad\desktop\flegma\programowanie\python\pool\pool.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="math.html">math</a><br>
+</td><td class="multicolumn"><a href="pygame.html">pygame</a><br>
+</td><td class="multicolumn"><a href="pymunk.html">pymunk</a><br>
+</td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="pool.html#Cue">Cue</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Cue">class <strong>Cue</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Cue">Cue</a>(pos)<br>
+&nbsp;<br>
+Represents&nbsp;the&nbsp;pool&nbsp;cue,&nbsp;including&nbsp;its&nbsp;position&nbsp;and&nbsp;angle.<br>
+&nbsp;<br>
+Attributes:<br>
+original_image&nbsp;(pygame.Surface):&nbsp;The&nbsp;original&nbsp;image&nbsp;of&nbsp;the&nbsp;cue.<br>
+angle&nbsp;(float):&nbsp;The&nbsp;current&nbsp;angle&nbsp;of&nbsp;the&nbsp;cue.<br>
+image&nbsp;(pygame.Surface):&nbsp;The&nbsp;rotated&nbsp;image&nbsp;of&nbsp;the&nbsp;cue.<br>
+rect&nbsp;(pygame.Rect):&nbsp;The&nbsp;rectangle&nbsp;representing&nbsp;the&nbsp;cue's&nbsp;position.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="Cue-__init__"><strong>__init__</strong></a>(self, pos)</dt><dd><span class="code">Initializes&nbsp;the&nbsp;cue&nbsp;with&nbsp;a&nbsp;specified&nbsp;position.<br>
+&nbsp;<br>
+Parameters:<br>
+pos&nbsp;(tuple):&nbsp;The&nbsp;initial&nbsp;position&nbsp;of&nbsp;the&nbsp;cue&nbsp;(x,&nbsp;y).</span></dd></dl>
+
+<dl><dt><a name="Cue-draw"><strong>draw</strong></a>(self, surface)</dt><dd><span class="code">Draws&nbsp;the&nbsp;cue&nbsp;on&nbsp;the&nbsp;given&nbsp;surface.<br>
+&nbsp;<br>
+Parameters:<br>
+surface&nbsp;(pygame.Surface):&nbsp;The&nbsp;surface&nbsp;to&nbsp;draw&nbsp;the&nbsp;cue&nbsp;on.</span></dd></dl>
+
+<dl><dt><a name="Cue-update"><strong>update</strong></a>(self, angle)</dt><dd><span class="code">Updates&nbsp;the&nbsp;angle&nbsp;of&nbsp;the&nbsp;cue.<br>
+&nbsp;<br>
+Parameters:<br>
+angle&nbsp;(float):&nbsp;The&nbsp;new&nbsp;angle&nbsp;of&nbsp;the&nbsp;cue.</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-check_game_over"><strong>check_game_over</strong></a>()</dt><dd><span class="code">Checks&nbsp;if&nbsp;the&nbsp;game&nbsp;is&nbsp;over&nbsp;(either&nbsp;by&nbsp;losing&nbsp;all&nbsp;lives&nbsp;or&nbsp;potting&nbsp;all&nbsp;balls)&nbsp;and&nbsp;displays&nbsp;the&nbsp;appropriate&nbsp;message.</span></dd></dl>
+ <dl><dt><a name="-create_ball"><strong>create_ball</strong></a>(radius, pos)</dt><dd><span class="code">Creates&nbsp;a&nbsp;ball&nbsp;with&nbsp;a&nbsp;specified&nbsp;radius&nbsp;and&nbsp;position,&nbsp;adds&nbsp;it&nbsp;to&nbsp;the&nbsp;physics&nbsp;space,&nbsp;and&nbsp;returns&nbsp;the&nbsp;shape.<br>
+&nbsp;<br>
+Parameters:<br>
+radius&nbsp;(float):&nbsp;The&nbsp;radius&nbsp;of&nbsp;the&nbsp;ball.<br>
+pos&nbsp;(tuple):&nbsp;The&nbsp;position&nbsp;of&nbsp;the&nbsp;ball&nbsp;(x,&nbsp;y).<br>
+&nbsp;<br>
+Returns:<br>
+pymunk.Circle:&nbsp;The&nbsp;created&nbsp;ball&nbsp;shape.</span></dd></dl>
+ <dl><dt><a name="-create_cushion"><strong>create_cushion</strong></a>(poly_dims)</dt><dd><span class="code">Creates&nbsp;a&nbsp;cushion&nbsp;using&nbsp;polygon&nbsp;dimensions&nbsp;and&nbsp;adds&nbsp;it&nbsp;to&nbsp;the&nbsp;physics&nbsp;space.<br>
+&nbsp;<br>
+Parameters:<br>
+poly_dims&nbsp;(list):&nbsp;The&nbsp;dimensions&nbsp;of&nbsp;the&nbsp;cushion&nbsp;polygon.</span></dd></dl>
+ <dl><dt><a name="-draw_balls"><strong>draw_balls</strong></a>()</dt><dd><span class="code">Draws&nbsp;all&nbsp;the&nbsp;balls&nbsp;on&nbsp;the&nbsp;screen&nbsp;based&nbsp;on&nbsp;their&nbsp;current&nbsp;positions.</span></dd></dl>
+ <dl><dt><a name="-draw_text"><strong>draw_text</strong></a>(text, font, text_col, x, y)</dt><dd><span class="code">Renders&nbsp;text&nbsp;on&nbsp;the&nbsp;screen&nbsp;at&nbsp;specified&nbsp;coordinates.<br>
+&nbsp;<br>
+Parameters:<br>
+text&nbsp;(str):&nbsp;The&nbsp;text&nbsp;to&nbsp;display.<br>
+font&nbsp;(pygame.font.Font):&nbsp;The&nbsp;font&nbsp;to&nbsp;use&nbsp;for&nbsp;rendering.<br>
+text_col&nbsp;(tuple):&nbsp;The&nbsp;color&nbsp;of&nbsp;the&nbsp;text&nbsp;(RGB).<br>
+x&nbsp;(int):&nbsp;The&nbsp;x-coordinate&nbsp;for&nbsp;the&nbsp;text&nbsp;position.<br>
+y&nbsp;(int):&nbsp;The&nbsp;y-coordinate&nbsp;for&nbsp;the&nbsp;text&nbsp;position.</span></dd></dl>
+ <dl><dt><a name="-game_menu"><strong>game_menu</strong></a>()</dt><dd><span class="code">Displays&nbsp;the&nbsp;main&nbsp;menu&nbsp;and&nbsp;handles&nbsp;user&nbsp;input&nbsp;to&nbsp;start&nbsp;the&nbsp;game&nbsp;or&nbsp;quit.<br>
+&nbsp;<br>
+Returns:<br>
+bool:&nbsp;True&nbsp;if&nbsp;the&nbsp;game&nbsp;should&nbsp;continue,&nbsp;False&nbsp;if&nbsp;it&nbsp;should&nbsp;quit.</span></dd></dl>
+ <dl><dt><a name="-handle_ball_potting"><strong>handle_ball_potting</strong></a>()</dt><dd><span class="code">Checks&nbsp;if&nbsp;any&nbsp;balls&nbsp;have&nbsp;been&nbsp;potted&nbsp;and&nbsp;updates&nbsp;the&nbsp;game&nbsp;state&nbsp;accordingly.</span></dd></dl>
+ <dl><dt><a name="-handle_cue"><strong>handle_cue</strong></a>()</dt><dd><span class="code">Updates&nbsp;the&nbsp;position&nbsp;and&nbsp;angle&nbsp;of&nbsp;the&nbsp;cue&nbsp;based&nbsp;on&nbsp;the&nbsp;mouse&nbsp;position&nbsp;and&nbsp;draws&nbsp;it&nbsp;on&nbsp;the&nbsp;screen.</span></dd></dl>
+ <dl><dt><a name="-handle_events"><strong>handle_events</strong></a>()</dt><dd><span class="code">Handles&nbsp;user&nbsp;input&nbsp;events,&nbsp;including&nbsp;mouse&nbsp;clicks&nbsp;and&nbsp;keyboard&nbsp;presses,&nbsp;to&nbsp;control&nbsp;the&nbsp;game&nbsp;flow.</span></dd></dl>
+ <dl><dt><a name="-handle_power_up"><strong>handle_power_up</strong></a>()</dt><dd><span class="code">Manages&nbsp;the&nbsp;power-up&nbsp;mechanics&nbsp;for&nbsp;the&nbsp;cue,&nbsp;adjusting&nbsp;the&nbsp;force&nbsp;applied&nbsp;to&nbsp;the&nbsp;cue&nbsp;ball&nbsp;based&nbsp;on&nbsp;user&nbsp;input.</span></dd></dl>
+ <dl><dt><a name="-init_game"><strong>init_game</strong></a>()</dt><dd><span class="code">Initializes&nbsp;the&nbsp;game&nbsp;window,&nbsp;Pymunk&nbsp;physics&nbsp;space,&nbsp;and&nbsp;other&nbsp;game&nbsp;settings.</span></dd></dl>
+ <dl><dt><a name="-load_images"><strong>load_images</strong></a>()</dt><dd><span class="code">Loads&nbsp;images&nbsp;for&nbsp;the&nbsp;cue,&nbsp;table,&nbsp;and&nbsp;balls&nbsp;from&nbsp;specified&nbsp;file&nbsp;paths.</span></dd></dl>
+ <dl><dt><a name="-pause_menu"><strong>pause_menu</strong></a>()</dt><dd><span class="code">Displays&nbsp;the&nbsp;pause&nbsp;menu&nbsp;and&nbsp;handles&nbsp;user&nbsp;input&nbsp;to&nbsp;resume&nbsp;or&nbsp;quit&nbsp;the&nbsp;game.</span></dd></dl>
+ <dl><dt><a name="-reset_game"><strong>reset_game</strong></a>()</dt><dd><span class="code">Resets&nbsp;the&nbsp;game&nbsp;state,&nbsp;including&nbsp;lives,&nbsp;force,&nbsp;and&nbsp;the&nbsp;positions&nbsp;of&nbsp;the&nbsp;balls&nbsp;and&nbsp;cushions.</span></dd></dl>
+ <dl><dt><a name="-setup_balls"><strong>setup_balls</strong></a>()</dt><dd><span class="code">Initializes&nbsp;the&nbsp;balls&nbsp;on&nbsp;the&nbsp;table,&nbsp;including&nbsp;the&nbsp;cue&nbsp;ball,&nbsp;and&nbsp;positions&nbsp;them&nbsp;in&nbsp;a&nbsp;triangular&nbsp;formation.</span></dd></dl>
+ <dl><dt><a name="-setup_cushions"><strong>setup_cushions</strong></a>()</dt><dd><span class="code">Sets&nbsp;up&nbsp;the&nbsp;cushions&nbsp;(bumpers)&nbsp;around&nbsp;the&nbsp;pool&nbsp;table&nbsp;using&nbsp;predefined&nbsp;coordinates.</span></dd></dl>
+ <dl><dt><a name="-setup_pockets"><strong>setup_pockets</strong></a>()</dt><dd><span class="code">Defines&nbsp;the&nbsp;positions&nbsp;of&nbsp;the&nbsp;pockets&nbsp;on&nbsp;the&nbsp;pool&nbsp;table.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>BG</strong> = (50, 50, 50)<br>
+<strong>BOTTOM_PANEL</strong> = 50<br>
+<strong>DARKGRAY</strong> = (47, 79, 79)<br>
+<strong>FPS</strong> = 120<br>
+<strong>GREEN</strong> = (0, 255, 0)<br>
+<strong>RED</strong> = (255, 0, 0)<br>
+<strong>SCREEN_HEIGHT</strong> = 678<br>
+<strong>SCREEN_WIDTH</strong> = 1200<br>
+<strong>WHITE</strong> = (255, 255, 255)<br>
+<strong>ball_images</strong> = [&lt;Surface(36x36x32 SW)&gt;, &lt;Surface(36x36x32 SW)&gt;, &lt;Surface(36x36x32 SW)&gt;, &lt;Surface(36x36x32 SW)&gt;, &lt;Surface(36x36x32 SW)&gt;, &lt;Surface(36x36x32 SW)&gt;, &lt;Surface(36x36x32 SW)&gt;, &lt;Surface(36x36x32 SW)&gt;, &lt;Surface(36x36x32 SW)&gt;, &lt;Surface(36x36x32 SW)&gt;, &lt;Surface(36x36x32 SW)&gt;, &lt;Surface(36x36x32 SW)&gt;, &lt;Surface(36x36x32 SW)&gt;, &lt;Surface(36x36x32 SW)&gt;, &lt;Surface(36x36x32 SW)&gt;, &lt;Surface(36x36x32 SW)&gt;]<br>
+<strong>balls</strong> = [&lt;pymunk.shapes.Circle object&gt;, &lt;pymunk.shapes.Circle object&gt;, &lt;pymunk.shapes.Circle object&gt;, &lt;pymunk.shapes.Circle object&gt;, &lt;pymunk.shapes.Circle object&gt;, &lt;pymunk.shapes.Circle object&gt;, &lt;pymunk.shapes.Circle object&gt;, &lt;pymunk.shapes.Circle object&gt;, &lt;pymunk.shapes.Circle object&gt;, &lt;pymunk.shapes.Circle object&gt;, &lt;pymunk.shapes.Circle object&gt;, &lt;pymunk.shapes.Circle object&gt;, &lt;pymunk.shapes.Circle object&gt;, &lt;pymunk.shapes.Circle object&gt;, &lt;pymunk.shapes.Circle object&gt;, &lt;pymunk.shapes.Circle object&gt;]<br>
+<strong>clock</strong> = &lt;Clock(fps=0.00)&gt;<br>
+<strong>cue</strong> = &lt;pool.Cue object&gt;<br>
+<strong>cue_angle</strong> = 0<br>
+<strong>cue_ball</strong> = &lt;pymunk.shapes.Circle object&gt;<br>
+<strong>cue_ball_potted</strong> = False<br>
+<strong>cue_image</strong> = &lt;Surface(1100x10x32 SW)&gt;<br>
+<strong>dia</strong> = 36<br>
+<strong>draw_options</strong> = &lt;pymunk.pygame_util.DrawOptions object&gt;<br>
+<strong>font</strong> = &lt;pygame.font.Font object&gt;<br>
+<strong>force</strong> = 0<br>
+<strong>force_direction</strong> = 1<br>
+<strong>game_running</strong> = True<br>
+<strong>large_font</strong> = &lt;pygame.font.Font object&gt;<br>
+<strong>lifes</strong> = 3<br>
+<strong>max_force</strong> = 10000<br>
+<strong>pocket_dia</strong> = 66<br>
+<strong>pockets</strong> = [(55, 63), (592, 48), (1134, 64), (55, 616), (592, 629), (1134, 616)]<br>
+<strong>potted_balls</strong> = []<br>
+<strong>power_bar</strong> = &lt;Surface(10x20x32 SW)&gt;<br>
+<strong>powering_up</strong> = False<br>
+<strong>run</strong> = False<br>
+<strong>screen</strong> = &lt;Surface(Dead Display)&gt;<br>
+<strong>small_font</strong> = &lt;pygame.font.Font object&gt;<br>
+<strong>space</strong> = &lt;pymunk.space.Space object&gt;<br>
+<strong>static_body</strong> = Body(Body.STATIC)<br>
+<strong>table_image</strong> = &lt;Surface(1200x678x32 SW)&gt;<br>
+<strong>taking_shot</strong> = True</td></tr></table>
+</body></html>

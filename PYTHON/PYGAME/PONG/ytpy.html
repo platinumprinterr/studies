@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module ytpy</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">ytpy</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cminad%5Cdesktop%5Cproject%5Cytpy.py">c:\users\minad\desktop\project\ytpy.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="pydoc.html">pydoc</a><br>
+</td><td class="multicolumn"><a href="pygame.html">pygame</a><br>
+</td><td class="multicolumn"><a href="random.html">random</a><br>
+</td><td class="multicolumn"><a href="time.html">time</a><br>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-checkScore"><strong>checkScore</strong></a>()</dt><dd><span class="code">Checks&nbsp;if&nbsp;the&nbsp;ball&nbsp;has&nbsp;crossed&nbsp;the&nbsp;field&nbsp;boundaries&nbsp;to&nbsp;determine&nbsp;if&nbsp;there&nbsp;was&nbsp;a&nbsp;score.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;int:&nbsp;0&nbsp;if&nbsp;player&nbsp;1&nbsp;scored,&nbsp;1&nbsp;if&nbsp;player&nbsp;2&nbsp;scored,&nbsp;-1&nbsp;if&nbsp;no&nbsp;score.</span></dd></dl>
+ <dl><dt><a name="-drawGame"><strong>drawGame</strong></a>()</dt><dd><span class="code">Draws&nbsp;the&nbsp;game&nbsp;elements&nbsp;such&nbsp;as&nbsp;borders,&nbsp;lines,&nbsp;player&nbsp;models,&nbsp;and&nbsp;the&nbsp;score&nbsp;table.</span></dd></dl>
+ <dl><dt><a name="-move_computer"><strong>move_computer</strong></a>(p2y, ballx, bally, ballxv, ballyv)</dt><dd><span class="code">Moves&nbsp;the&nbsp;AI-controlled&nbsp;paddle&nbsp;towards&nbsp;the&nbsp;predicted&nbsp;ball&nbsp;position.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;p2y&nbsp;(float):&nbsp;Current&nbsp;y&nbsp;position&nbsp;of&nbsp;the&nbsp;paddle.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ballx&nbsp;(float):&nbsp;Current&nbsp;x&nbsp;position&nbsp;of&nbsp;the&nbsp;ball.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bally&nbsp;(float):&nbsp;Current&nbsp;y&nbsp;position&nbsp;of&nbsp;the&nbsp;ball.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ballxv&nbsp;(float):&nbsp;x&nbsp;velocity&nbsp;of&nbsp;the&nbsp;ball.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ballyv&nbsp;(float):&nbsp;y&nbsp;velocity&nbsp;of&nbsp;the&nbsp;ball.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;float:&nbsp;New&nbsp;y&nbsp;position&nbsp;of&nbsp;the&nbsp;paddle.</span></dd></dl>
+ <dl><dt><a name="-resetBall"><strong>resetBall</strong></a>()</dt><dd><span class="code">Resets&nbsp;the&nbsp;ball&nbsp;to&nbsp;the&nbsp;center&nbsp;of&nbsp;the&nbsp;field&nbsp;and&nbsp;initializes&nbsp;its&nbsp;speed&nbsp;and&nbsp;direction.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tuple:&nbsp;Initial&nbsp;values&nbsp;for&nbsp;the&nbsp;ball's&nbsp;position,&nbsp;velocity,&nbsp;direction,&nbsp;and&nbsp;paddle&nbsp;positions.</span></dd></dl>
+ <dl><dt><a name="-return_to_menu"><strong>return_to_menu</strong></a>()</dt><dd><span class="code">Resets&nbsp;the&nbsp;game&nbsp;state&nbsp;and&nbsp;returns&nbsp;to&nbsp;the&nbsp;main&nbsp;menu.</span></dd></dl>
+ <dl><dt><a name="-show_difficulty_menu"><strong>show_difficulty_menu</strong></a>()</dt><dd><span class="code">Displays&nbsp;the&nbsp;difficulty&nbsp;selection&nbsp;menu&nbsp;for&nbsp;single-player&nbsp;mode.</span></dd></dl>
+ <dl><dt><a name="-show_game_over"><strong>show_game_over</strong></a>(winner, score_diff)</dt><dd><span class="code">Displays&nbsp;the&nbsp;game&nbsp;over&nbsp;screen&nbsp;with&nbsp;the&nbsp;winner&nbsp;and&nbsp;score&nbsp;difference.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;winner&nbsp;(str):&nbsp;The&nbsp;winner&nbsp;of&nbsp;the&nbsp;game.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;score_diff&nbsp;(int):&nbsp;The&nbsp;score&nbsp;difference.</span></dd></dl>
+ <dl><dt><a name="-show_goodbye"><strong>show_goodbye</strong></a>()</dt><dd><span class="code">Displays&nbsp;the&nbsp;goodbye&nbsp;screen.</span></dd></dl>
+ <dl><dt><a name="-show_main_menu"><strong>show_main_menu</strong></a>()</dt><dd><span class="code">Displays&nbsp;the&nbsp;main&nbsp;menu&nbsp;screen.</span></dd></dl>
+ <dl><dt><a name="-show_pause_menu"><strong>show_pause_menu</strong></a>()</dt><dd><span class="code">Displays&nbsp;the&nbsp;pause&nbsp;menu.</span></dd></dl>
+ <dl><dt><a name="-show_welcome"><strong>show_welcome</strong></a>()</dt><dd><span class="code">Displays&nbsp;the&nbsp;welcome&nbsp;screen.</span></dd></dl>
+ <dl><dt><a name="-tickBall"><strong>tickBall</strong></a>(ballx, bally, ballxv, ballyv)</dt><dd><span class="code">Handles&nbsp;the&nbsp;movement&nbsp;and&nbsp;collision&nbsp;of&nbsp;the&nbsp;ball.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ballx&nbsp;(float):&nbsp;Current&nbsp;x&nbsp;position&nbsp;of&nbsp;the&nbsp;ball.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bally&nbsp;(float):&nbsp;Current&nbsp;y&nbsp;position&nbsp;of&nbsp;the&nbsp;ball.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ballxv&nbsp;(float):&nbsp;x&nbsp;velocity&nbsp;of&nbsp;the&nbsp;ball.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ballyv&nbsp;(float):&nbsp;y&nbsp;velocity&nbsp;of&nbsp;the&nbsp;ball.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tuple:&nbsp;Updated&nbsp;position&nbsp;and&nbsp;velocity&nbsp;of&nbsp;the&nbsp;ball.</span></dd></dl>
+ <dl><dt><a name="-tickPlayers"><strong>tickPlayers</strong></a>(p1y, p1v)</dt><dd><span class="code">Handles&nbsp;player&nbsp;1&nbsp;movement&nbsp;based&nbsp;on&nbsp;keyboard&nbsp;input.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;p1y&nbsp;(float):&nbsp;The&nbsp;current&nbsp;y&nbsp;position&nbsp;of&nbsp;player&nbsp;1's&nbsp;paddle.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;p1v&nbsp;(float):&nbsp;The&nbsp;current&nbsp;velocity&nbsp;of&nbsp;player&nbsp;1's&nbsp;paddle.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tuple:&nbsp;Updated&nbsp;y&nbsp;position&nbsp;and&nbsp;velocity&nbsp;of&nbsp;player&nbsp;1's&nbsp;paddle.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>BLACK</strong> = (0, 0, 0)<br>
+<strong>RED</strong> = (209, 41, 41)<br>
+<strong>WHITE</strong> = (255, 255, 255)<br>
+<strong>aispeed</strong> = 1.5<br>
+<strong>ballDirRight</strong> = False<br>
+<strong>ballMaxSpeed</strong> = 11<br>
+<strong>ballSize</strong> = 14<br>
+<strong>ballSpeed</strong> = 8<br>
+<strong>ball_hit</strong> = False<br>
+<strong>ballx</strong> = 640.0<br>
+<strong>ballxv</strong> = 8<br>
+<strong>bally</strong> = 360.0<br>
+<strong>ballyv</strong> = 0<br>
+<strong>clock</strong> = &lt;Clock(fps=59.17)&gt;<br>
+<strong>done</strong> = False<br>
+<strong>event</strong> = &lt;Event(32776-WindowExposed {'window': None})&gt;<br>
+<strong>font</strong> = &lt;pygame.font.Font object&gt;<br>
+<strong>fps</strong> = 60<br>
+<strong>height</strong> = 720<br>
+<strong>maxscore</strong> = 11<br>
+<strong>menu_font</strong> = &lt;pygame.font.Font object&gt;<br>
+<strong>mode</strong> = 'goodbye'<br>
+<strong>p1_height</strong> = 180<br>
+<strong>p1_width</strong> = 30<br>
+<strong>p1v</strong> = 0<br>
+<strong>p1x</strong> = 50<br>
+<strong>p1y</strong> = 270.0<br>
+<strong>p2_height</strong> = 180<br>
+<strong>p2_width</strong> = 30<br>
+<strong>p2v</strong> = 0<br>
+<strong>p2x</strong> = 1200<br>
+<strong>p2y</strong> = 270.0<br>
+<strong>pspeed</strong> = 2<br>
+<strong>score</strong> = [0, 0]<br>
+<strong>screen</strong> = &lt;Surface(Dead Display)&gt;<br>
+<strong>size</strong> = (1280, 720)<br>
+<strong>width</strong> = 1280</td></tr></table>
+</body></html>
